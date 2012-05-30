@@ -1,0 +1,24 @@
+Mac OS X Qt 4.8 mkspec files for GCC 4.7
+============
+
+Requirements
+============
+
+- Installed Qt 4.8 and Xcode Command Line Tools
+- Installed GCC 4.7 (you may use my [script](https://github.com/silvansky/macscripts/blob/master/build_gcc.sh))
+- export PATH=/usr/local/gcc-4.7/bin:$PATH
+
+Installation
+============
+
+Copy all files (with sudo) in /usr/local/Qt4.8/mkspec/
+
+        sudo cp * /usr/local/Qt4.8/mkspec/
+
+After copying, you should add new Tool Chain in Qt Creator in Settings -> Build & Run -> Tool Chains -> Add -> Clang
+
+Rename new Tool Chain to "GCC-4.7" or something. In its props set Compiler path to "/usr/local/gcc-4.7/bin/g++-4.7", Debugger to "gdb" and mkspec to "macx-g++47". Now you can select this Tool Chain in your project's properties.
+
+To use this mkspec from command line, you should specify it in qmake's args:
+
+        qmake -spec macx-g++47
